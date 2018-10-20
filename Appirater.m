@@ -392,11 +392,11 @@ static BOOL _alwaysUseMainBundle = NO;
 		return NO;
 	
 	// if the user wanted to be reminded later, has enough time passed?
-	NSDate *reminderRequestDate = [NSDate dateWithTimeIntervalSince1970:[userDefaults doubleForKey:kAppiraterReminderRequestDate]];
-	NSTimeInterval timeSinceReminderRequest = [[NSDate date] timeIntervalSinceDate:reminderRequestDate];
-	NSTimeInterval timeUntilReminder = 60 * 60 * 24 * _timeBeforeReminding;
-	if (timeSinceReminderRequest < timeUntilReminder)
-		return NO;
+//    NSDate *reminderRequestDate = [NSDate dateWithTimeIntervalSince1970:[userDefaults doubleForKey:kAppiraterReminderRequestDate]];
+//    NSTimeInterval timeSinceReminderRequest = [[NSDate date] timeIntervalSinceDate:reminderRequestDate];
+//    NSTimeInterval timeUntilReminder = 60 * 60 * 24 * _timeBeforeReminding;
+//    if (timeSinceReminderRequest < timeUntilReminder)
+//        return NO;
 	
 	return YES;
 }
@@ -755,7 +755,7 @@ static BOOL _alwaysUseMainBundle = NO;
         }
         case 2:
             // remind them later
-            [userDefaults setDouble:[[NSDate date] timeIntervalSince1970] forKey:kAppiraterReminderRequestDate];
+            [userDefaults setInteger:0 forKey:kAppiraterUseCount];
             [userDefaults synchronize];
             if(delegate && [delegate respondsToSelector:@selector(appiraterDidOptToRemindLater:)]){
                 [delegate appiraterDidOptToRemindLater:self];
